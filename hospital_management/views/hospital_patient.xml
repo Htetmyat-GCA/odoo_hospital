@@ -18,6 +18,11 @@
               <field name="age"/>
               <field name="gender"/>
             </group>
+            <notebook>
+              <page string="Documents">
+                <field name="document"/>
+              </page>
+            </notebook>
           </sheet>
         </form>
       </field>
@@ -27,9 +32,11 @@
       <field name="model">hospital.patient</field>
       <field name="arch" type="xml">
         <tree string="">
+          <field name="reference"/>
           <field name="name"/>
           <field name="age"/>
           <field name="gender"/>
+
         </tree>
       </field>
     </record>
@@ -71,8 +78,12 @@
     </record>
 
 <!--    === MENU ITEM ===   -->
-    <menuitem id="hospital_patient_menu" name="Patient" parent="menu_hospital" action="action_hospital_patient" sequence="2"/>
-    <menuitem id="menu_hospital_patient_female" name="Patient" parent="menu_hospital" action="action_hospital_patient" sequence="3"/>
-    <menuitem id="menu_hospital_patient_male" name="Patient" parent="menu_hospital" action="action_hospital_patient" sequence="4"/>
+    <menuitem id="hospital_patient_root_menu" name="Patient" parent="menu_hospital" sequence="2"/>
+    <menuitem id="hospital_patient_menu" name="" parent="hospital_patient_root_menu"
+              action="action_hospital_patient" sequence="1"/>
+    <menuitem id="menu_hospital_patient_female" name="Female" parent="hospital_patient_root_menu"
+              action="action_hospital_patient_female" sequence="3"/>
+    <menuitem id="menu_hospital_patient_male" name="Male" parent="hospital_patient_root_menu"
+              action="action_hospital_patient_male" sequence="4"/>
   </data>
 </odoo>

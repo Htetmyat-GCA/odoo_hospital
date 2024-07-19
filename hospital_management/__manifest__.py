@@ -10,6 +10,7 @@
     'depends': ['base', 'web_enterprise'],
     'data': [
         'security/ir.model.access.csv',
+        'data/patient_sequence.xml',
         'views/hospital_patient.xml',
     ],
     'assets': {
