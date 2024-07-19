@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <menuitem id="menu_hospital" name="Hospital" sequence="1" web_icon="hospital_management,static/description/hospital_management.png"/>
+<!--    === UI VIEW ===   -->
+    <record id="hospital_patient_form_view" model="ir.ui.view">
+      <field name="name">hospital.patient.form.view</field>
+      <field name="model">hospital.patient</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <h1 class="d-flex flex-column">
+              <field name="reference"/>
+            </h1>
+            <group>
+              <field name="name"/>
+              <field name="birth_date"/>
+              <field name="age"/>
+              <field name="gender"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="hospital_patient_tree_view" model="ir.ui.view">
+      <field name="name">hospital.patient.tree.view</field>
+      <field name="model">hospital.patient</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="name"/>
+          <field name="age"/>
+          <field name="gender"/>
+        </tree>
+      </field>
+    </record>
+<!--    === SEARCH VIEW ===     -->
+    <record id="hospital_patient_search_view" model="ir.ui.view">
+     <field name="name">hospital.patient.search</field>
+     <field name="model">hospital.patient</field>
+      <field name="arch" type="xml">
+        <search string="">
+          <field name="name" string="string" />
+          <field name="gender" string="string" />
+          <field name="age" string="string" />
+          <searchpanel>
+            <field name="gender" string="Genders" enable_counters="1"/>
+          </searchpanel>
+      </search>
+     </field>
+    </record>
+<!--    === ACTIONS WINDOW ===    -->
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+      <field name="name">Hospital Patient</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital.patient</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_hospital_patient_female" model="ir.actions.act_window">
+      <field name="name">Female Patient</field>
+      <field name="res_model">hospital.patient</field>
+      <field name="domain">[('gender', '=', 'female')]</field>
+      <field name="context">{'default_gender': 'female'}</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_hospital_patient_male" model="ir.actions.act_window">
+      <field name="name">Male Patient</field>
+      <field name="res_model">hospital.patient</field>
+      <field name="domain">[('gender', '=', 'male')]</field>
+      <field name="context">{'default_gender': 'male'}</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+<!--    === MENU ITEM ===   -->
+    <menuitem id="hospital_patient_menu" name="Patient" parent="menu_hospital" action="action_hospital_patient" sequence="2"/>
+    <menuitem id="menu_hospital_patient_female" name="Patient" parent="menu_hospital" action="action_hospital_patient" sequence="3"/>
+    <menuitem id="menu_hospital_patient_male" name="Patient" parent="menu_hospital" action="action_hospital_patient" sequence="4"/>
+  </data>
+</odoo>
