@@ -11,6 +11,7 @@
         'security/ir.model.access.csv',
         'data/res_weekday.xml',
         'views/hospital_doctor_res_partner_inherit.xml',
+        'views/doctor_specialist_category.xml',
     ],
     'installable': True,
     'auto_install': False,

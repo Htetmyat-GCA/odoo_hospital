@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 hospital.specialist.category,hospital.specialist.category,model_hospital_specialist_category,base.group_system,1,1,1,1
 hospital.specialist.category,hospital.specialist.category,model_hospital_specialist_category,base.group_user,1,1,1,0
-doctor.present_days.in_week,doctor.present_days.in_week,model_res_weekday,base.group_user,1,0,0,0
+doctor.present_days.in_week.readonly,doctor.present_days.in_week.readonly,model_res_weekday,base.group_user,1,0,0,0
+doctor.present_days.in_week.admin,doctor.present_days.in_week.admin,model_res_weekday,base.group_system,1,1,0,0
