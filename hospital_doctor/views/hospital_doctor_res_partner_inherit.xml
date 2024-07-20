@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="hospital_doctor_form_view" model="ir.ui.view">
+      <field name="name">hospital.doctor.form.view</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='vat']" position="replace">
+          <field name="present_days" string="Available Days" widget="many2many_tags"/>
+          <field name="specialist" string="Specialist"/>
+          <field name="available_hours" string="During Hours"/>
+          <field name="is_doctor" string="Doctor"/>
+        </xpath>
+        </field>
+    </record>
+
+    <record id="action_hospital_doctor" model="ir.actions.act_window">
+      <field name="name">Hospital Doctors</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_id" ref="base.res_partner_kanban_view"/>
+      <field name="domain">[('is_doctor', '=', True)]</field>
+      <field name="context">{'default_is_doctor': True, 'default_company_type': 'person'}</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <menuitem id="menu_contact_action_doctors" name="Doctor" parent="hospital_management.menu_hospital"
+              action="action_hospital_doctor" sequence="3"/>
+  </data>
+</odoo>

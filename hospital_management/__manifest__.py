@@ -7,11 +7,12 @@
     'author': 'Htet Myat',
     'website': '',
     'license': '',
-    'depends': ['base', 'web_enterprise'],
+    'depends': ['base', 'web_enterprise', 'mail', 'hospital_doctor'],
     'data': [
         'security/ir.model.access.csv',
         'data/patient_sequence.xml',
         'views/hospital_patient.xml',
+        'views/hospital_configuration.xml',
     ],
     'assets': {
             'web._assets_primary_variables': [

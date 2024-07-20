@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="doctor_specialist_category_action" model="ir.actions.act_window">
+        <field name="name">Doctor Specialist Category</field>
+        <field name="res_model">hospital.specialist.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="week_days_action" model="ir.actions.act_window">
+        <field name="name">Week Days</field>
+        <field name="res_model">res.weekday</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="doctor_specialist_category_menu" name="Specialist Category" parent="hospital_management.configures_menu"
+              action="doctor_specialist_category_action" sequence="2"/>
+    <menuitem id="doctor_present_weekdays" name="Weekdays" parent="hospital_management.configures_menu"
+              action="week_days_action" sequence="5"/>
+  </data>
+</odoo>

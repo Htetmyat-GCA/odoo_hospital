@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <menuitem id="configures_menu" name="Configurations" parent="menu_hospital" sequence="10"/>
+    <record id="patient_case_category_action" model="ir.actions.act_window">
+      <field name="name">Patient Case Category</field>
+      <field name="res_model">patient.case</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_patient_category" name="Patient Category"
+              parent="configures_menu" action="patient_case_category_action"
+              sequence="1"/>
+  </data>
+</odoo>

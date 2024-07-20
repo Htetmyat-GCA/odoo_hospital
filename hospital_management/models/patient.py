@@ -1,20 +1,26 @@
 from odoo import api, fields, models
-from datetime import date, datetime, timedelta
+from datetime import datetime
 
 
 class Patient(models.Model):
     _name = 'hospital.patient'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Hospital Patient'
+    _order = 'id desc'
 
-    name = fields.Char(string='Name', required=True)
+    name = fields.Char(string='Name', required=True, tracking=True)
     reference = fields.Char(string='Reference', readonly=True)
     age = fields.Integer(string='Age', store=True, readonly=True, default=1)
-    birth_date = fields.Date(string='Birth Date', required=True)
+    birth_date = fields.Date(string='Birth Date', required=True, tracking=True)
+    email = fields.Char(string='Email', tracking=True)
+    phone = fields.Char(string='Phone')
     gender = fields.Selection(
-        [('male', 'Male'), ('female', 'Female')], required=True, string='Gender'
-    )
-    is_patient = fields.Boolean(string='Is Patient', readonly=True, default=True)
-    document = fields.Many2one('patient.recordbook', string='Document')
+        [('male', 'Male'), ('female', 'Female')], required=True, string='Gender', tracking=True)
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('appointed', 'Appointed'),
+    ])
+    document = fields.Many2one('patient.medical.record', string='Document')
 
     @api.onchange('birth_date')
     def onchange_birth_date(self):
@@ -33,19 +39,19 @@ class Patient(models.Model):
         return super().create(vals)
 
 
-class RecordBook(models.Model):
-    _name = 'patient.recordbook'
-    _description = 'Patient RecordBook'
+class MedicalRecord(models.Model):
+    _name = 'patient.medical.record'
+    _description = 'Patient Medical Record Book'
 
     patient_id = fields.Many2one('hospital.patient', string='Patient', domain=[('is_patient', '=', True)])
-    # doctor_id = fields.Many2one('res.partner', string='Doctor', domain=[('is_doctor', '=', True)])
+    doctor_id = fields.Many2many('res.partner', string='Doctor', domain=[('is_doctor', '=', True)])
     appointment_date = fields.Datetime(string='Appointment Date', default=fields.Datetime.now)
     description = fields.Char(string='Description')
-    status = fields.Selection(
-        [('appointing', 'Appointing'), ('reappoint', 'Reappointing'), ('inactive', 'Inactive')],
-        string='Status',
-    )
-    handover = fields.Char(string='Redirect')
+    # status = fields.Selection(
+    #     [('appointing', 'Appointing'), ('reappoint', 'Reappointing'), ('inactive', 'Inactive')],
+    #     string='Status',
+    # )
+    refer = fields.Char(string='Refer To')
 
 
 class PatientCase(models.Model):

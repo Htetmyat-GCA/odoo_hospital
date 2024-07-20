@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="weekday_sun" model="res.weekday">
+      <field name="index">0</field>
+      <field name="name">Sunday</field>
+    </record>
+    <record id="weekday_mon" model="res.weekday">
+      <field name="index">1</field>
+      <field name="name">Monday</field>
+    </record>
+    <record id="weekday_tue" model="res.weekday">
+      <field name="index">2</field>
+      <field name="name">Tuesday</field>
+    </record>
+    <record id="weekday_wed" model="res.weekday">
+      <field name="index">3</field>
+      <field name="name">Wednesday</field>
+    </record>
+    <record id="weekday_thu" model="res.weekday">
+      <field name="index">4</field>
+      <field name="name">Thursday</field>
+    </record>
+    <record id="weekday_fri" model="res.weekday">
+      <field name="index">5</field>
+      <field name="name">Friday</field>
+    </record>
+    <record id="weekday_sat" model="res.weekday">
+      <field name="index">6</field>
+      <field name="name">Saturday</field>
+    </record>
+  </data>
+</odoo>

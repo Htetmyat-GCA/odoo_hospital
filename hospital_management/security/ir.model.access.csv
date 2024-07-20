@@ -1,5 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-patient.record.book,patient.record.book,model_patient_recordbook,base.group_user,1,1,1,0
-patient.record.book.readonly,patient.record.book.readonly,model_patient_recordbook,base.group_user,1,1,1,0
+patient.medical.record.book,patient.medical.record.book,model_patient_medical_record,base.group_user,1,1,1,0
+patient.medical.record.book.readonly,patient.medical.record.book.readonly,model_patient_medical_record,base.group_user,1,1,1,0
 hospital.patient.admin,hospital.patient.admin,model_hospital_patient,base.group_system,1,1,1,1
 hospital.patient,hospital.patient,model_hospital_patient,base.group_user,1,1,1,0
+hospital.setting.patient.category,hospital.setting.patient.category,model_patient_case,base.group_user,1,1,1,1
